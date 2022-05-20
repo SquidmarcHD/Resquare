@@ -10,31 +10,17 @@ class bf_read;
 class CInput
 {
 public:
-    char                pad_0x00[0x0C];
-    bool                m_trackir_available;
-    bool                m_mouse_initiated;
-    bool                m_mouse_active;
-    bool                m_fJoystickAdvancedInit;
-    char                pad_0x08[0x2C];
-    void* m_pKeys;
-    char                pad_0x38[0x6C];
-    bool                m_fCameraInterceptingMouse;
-    bool                m_fCameraInThirdPerson;
-    bool                m_fCameraMovingWithMouse;
-    Vector            m_vecCameraOffset;
-    bool                m_fCameraDistanceMove;
-    int                 m_nCameraOldX;
-    int                 m_nCameraOldY;
-    int                 m_nCameraX;
-    int                 m_nCameraY;
-    bool                m_CameraIsOrthographic;
-    Vector              m_angPreviousViewAngles;
-    Vector              m_angPreviousViewAnglesTilt;
-    float               m_flLastForwardMove;
-    int                 m_nClearInputState;
-    char                pad_0xE4[0x8];
-    CUserCmd* m_pCommands;
-    CVerifiedUserCmd* m_pVerifiedCommands;
+    std::byte            pad0[0xC];            // 0x0
+    bool                m_bTrackIRAvailable;        // 0xC
+    bool                m_bMouseInitialized;        // 0xD
+    bool                m_bMouseActive;            // 0xE
+    std::byte            pad1[0x9A];            // 0xF
+    bool                m_bCameraInThirdPerson;    // 0xA9
+    std::byte            pad2[0x2];            // 0xAA
+    Vector                m_vecCameraOffset;        // 0xAC
+    std::byte            pad3[0x38];            // 0xB8
+    CUserCmd* m_pCommands;            // 0xF0
+    CVerifiedUserCmd* p_VerifiedCommands;        //0xF8
 
     inline CUserCmd* GetUserCmd(int sequence_number);
     inline CUserCmd* GetUserCmd(int nSlot, int sequence_number);
