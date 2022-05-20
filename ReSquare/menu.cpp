@@ -169,15 +169,14 @@ void Menu::Render()
         ImGui::Text("SQUARE");
         ImGui::SetWindowFontScale(menusize * 1);
         ImGui::Text(
-            "[12.03.2022]\n"
+            "[20.05.2022]\n"
             "\n"
             "Current issues :\n"
             "\n"
             "-Animfix is crashing game sometimes, disable it in Config Tab\n"
             "-Disable Anti-Untrusted when using Doubletap\n"
             "-Honestly hits more head without the Resolver\n"
-            "-Im genuinly losing my fucking mind\n-i fucking cant anymore\n-another month riddled with bugs and issues i have to fix\n-Backtrack is experimental, always use max targeting otherwise it may brokey");
-        ImGui::SetCursorPos({ 6, ImGui::GetWindowSize().y - ImGui::CalcTextSize("A").y * 3 });
+            "-Im genuinly losing my fucking mind\n-i fucking cant anymore\n-another month riddled with bugs and issues i have to fix\n-Backtrack is experimental, always use max targeting otherwise it may brokey\n-fix for updat");ImGui::SetCursorPos({ 6, ImGui::GetWindowSize().y - ImGui::CalcTextSize("A").y * 3 });
         ImGui::Text("[This is a free cheat, if you payed for it, you got scammed]");
         ImGui::SetCursorPos({ 2, ImGui::GetWindowSize().y - ImGui::CalcTextSize("A").y * 2 });
         if(ImGui::Button("[Report a bug : https://discord.gg/9j5NnPTWMv]"))
