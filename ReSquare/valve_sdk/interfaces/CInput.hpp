@@ -15,7 +15,7 @@ public:
     bool                m_bMouseInitialized;        // 0xD
     bool                m_bMouseActive;            // 0xE
     std::byte            pad1[0x9A];            // 0xF
-    bool                m_bCameraInThirdPerson;    // 0xA9
+    bool                m_fCameraInThirdPerson;    // 0xA9
     std::byte            pad2[0x2];            // 0xAA
     Vector                m_vecCameraOffset;        // 0xAC
     std::byte            pad3[0x38];            // 0xB8
@@ -33,14 +33,13 @@ CUserCmd* CInput::GetUserCmd(int sequence_number)
     return CallVFunction<OriginalFn>(this, 8)(this, 0, sequence_number);
 }
 
-CUserCmd* CInput::GetUserCmd(int nSlot, int sequence_number)
+CUserCmd* CInput::GetUserCmd(int nSlot, int sequence_num)
 {
-    typedef CUserCmd* (__thiscall* GetUserCmd_t)(void*, int, int);
-    return CallVFunction<GetUserCmd_t>(this, 8)(this, nSlot, sequence_number);
+    using fn = CUserCmd * (__thiscall*)(void*, int, int);
+    return (*(fn**)this)[8](this, nSlot, sequence_num);
 }
 
 CVerifiedUserCmd* CInput::GetVerifiedCmd(int sequence_number)
 {
-    auto verifiedCommands = *(CVerifiedUserCmd**)(reinterpret_cast<uint32_t>(this) + 0xF8);
-    return &verifiedCommands[sequence_number % MULTIPLAYER_BACKUP];
+    return &p_VerifiedCommands[sequence_number % 150];
 }
